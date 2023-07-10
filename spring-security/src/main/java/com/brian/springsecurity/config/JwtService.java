@@ -8,6 +8,8 @@ import io.jsonwebtoken.Jwts;
 @Service
 public class JwtService {
 
+    private static final String SECRET_KEY = "";
+
     public String extractUsername(String jwt) {
         return null;
     }
