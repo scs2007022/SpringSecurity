@@ -2,6 +2,9 @@ package com.brian.springsecurity.config;
 
 import org.springframework.stereotype.Service;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+
 @Service
 public class JwtService {
 
@@ -9,4 +12,7 @@ public class JwtService {
         return null;
     }
 
+    private Claims extractAllClaims(String jwt){
+        return Jwts.parserBuilder().setSigningKey(getSigningKey()).build().parseClaimJws(jwt).getBody();
+    }
 }
