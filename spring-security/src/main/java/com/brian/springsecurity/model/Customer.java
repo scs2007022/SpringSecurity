@@ -30,9 +30,9 @@ public class Customer implements UserDetails{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private String firstName;
+    private String firstname;
     
-    private String lastName;
+    private String lastname;
     
     private String email;
     
