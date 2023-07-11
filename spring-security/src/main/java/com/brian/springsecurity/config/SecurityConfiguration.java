@@ -25,7 +25,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
             .csrf(Customizer.withDefaults())
-            .authorizeHttpRequests(auth->auth.requestMatchers("/api/v1/auth/authenticate","/api/v1/auth/register","/api/v1/demo-controller").permitAll().anyRequest().authenticated())
+            .authorizeHttpRequests(auth->auth.requestMatchers("/api/v1/auth/**","/h2-console","/api/v1/demo-controller").permitAll().anyRequest().authenticated())
             .sessionManagement(sess->sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authenticationProvider(authenticationProvider)
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
