@@ -14,7 +14,7 @@ public class ServiceController {
     }
     @GetMapping("/customer")
     public String customer(){
-        return "Only authenticated customer and admin can read this.";
+        return "Only authenticated customer or admin can read this.";
     }
     @GetMapping("/admin")
     public String admin(){

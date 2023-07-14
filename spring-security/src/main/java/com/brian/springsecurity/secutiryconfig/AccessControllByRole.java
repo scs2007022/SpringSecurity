@@ -1,4 +1,4 @@
-package com.brian.springsecurity.config;
+package com.brian.springsecurity.secutiryconfig;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -16,7 +16,7 @@ public class AccessControllByRole {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
             .authorizeHttpRequests(auth->auth
-                .requestMatchers("/customer/**").hasAnyRole("USER","ADMIN")
+                .requestMatchers("/customer/**").hasAnyRole("CUSTOMER","ADMIN")
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().permitAll()            
             )

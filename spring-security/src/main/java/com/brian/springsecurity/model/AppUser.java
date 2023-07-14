@@ -24,12 +24,12 @@ import lombok.NoArgsConstructor;
 import lombok.Singular;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "appusers")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Customer implements UserDetails{
+public class AppUser implements UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
