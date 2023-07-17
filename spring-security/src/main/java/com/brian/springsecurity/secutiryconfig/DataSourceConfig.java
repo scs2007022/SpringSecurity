@@ -1,20 +1,19 @@
-package com.brian.springsecurity.datasource;
+package com.brian.springsecurity.secutiryconfig;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
-import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Component;
 
 import com.brian.springsecurity.model.AppUser;
@@ -22,6 +21,7 @@ import com.brian.springsecurity.model.Role;
 
 @Configuration
 @Component
+@EnableWebSecurity
 public class DataSourceConfig {
 
 
@@ -54,7 +54,7 @@ public class DataSourceConfig {
     }
 
     @Bean
-    UserDetailsManager users(DataSource dataSource){
+    JdbcUserDetailsManager users(DataSource dataSource){
         AppUser customer = AppUser.builder()
             .email("customer@gmail.com")
             .name("Customer")

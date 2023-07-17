@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 
 @Configuration
 @EnableWebSecurity
-public class AuthEventOublisher {
+public class AuthEventPublisher {
 
     @Bean
     @ConditionalOnMissingBean(AuthenticationEventPublisher.class)
