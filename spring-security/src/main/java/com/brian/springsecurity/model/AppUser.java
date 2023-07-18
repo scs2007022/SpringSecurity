@@ -7,6 +7,7 @@ import java.util.Set;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +20,7 @@ import lombok.NoArgsConstructor;
 import lombok.Singular;
 
 @Entity
-@Table(name = "appusers")
+@Table(name = "users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -38,6 +39,9 @@ public class AppUser implements UserDetails{
     private String phone;
     
     private String password;
+
+    @Column(name="enabled")
+    private boolean enalbed;
 
     @Singular
     private Set<Role> roles;
