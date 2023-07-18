@@ -27,6 +27,7 @@ public class AuthenticationProviderManagerConfig {
         return authProvider;
     }
 
+    // @Autowired
     // public void configureGlobal(AuthenticationManagerBuilder auth)throws Exception{
     //     auth.authenticationProvider(authenticationProvider());
     // }

@@ -26,9 +26,11 @@ import lombok.Singular;
 @Builder
 public class AppUser implements UserDetails{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    private String username;
+
     private String email;
 
     private String name;
@@ -36,7 +38,7 @@ public class AppUser implements UserDetails{
     private String phone;
     
     private String password;
-    
+
     @Singular
     private Set<Role> roles;
 
@@ -47,11 +49,6 @@ public class AppUser implements UserDetails{
             authorities.add(role);
         }
         return authorities;
-    }
-
-    @Override
-    public String getUsername() {
-        return this.getEmail();
     }
 
     @Override
