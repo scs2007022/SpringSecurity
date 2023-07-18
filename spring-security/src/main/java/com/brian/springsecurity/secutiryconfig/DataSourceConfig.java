@@ -82,23 +82,23 @@ public class DataSourceConfig {
     JdbcUserDetailsManager users(){
         JdbcUserDetailsManager users = new JdbcUserDetailsManager();
         users.setDataSource(dataSource());
-        AppUser admin = AppUser.builder()
-            .username("admin")
-            .email("admin@gmail.com")
-            .name("Admin")
-            .phone("98765432")
-            .password(passwordEncoder().encode("P@$$w0rd"))
-            .role(Role.ROLE_ADMIN)
-            .build();
+        // AppUser admin = AppUser.builder()
+        //     .username("admin")
+        //     .email("admin@gmail.com")
+        //     .name("Admin")
+        //     .phone("98765432")
+        //     .password(passwordEncoder().encode("P@$$w0rd"))
+        //     .role(Role.ROLE_ADMIN)
+        //     .build();
         // users.createUser(admin);
-        AppUser customer = AppUser.builder()
-        .username("customer")
-        .email("customer@gmail.com")
-        .name("Customer")
-        .phone("98765432")
-        .password(passwordEncoder().encode("P@$$w0rd"))
-        .role(Role.ROLE_CUSTOMER)
-        .build();
+        // AppUser customer = AppUser.builder()
+        //     .username("customer")
+        //     .email("customer@gmail.com")
+        //     .name("Customer")
+        //     .phone("98765432")
+        //     .password(passwordEncoder().encode("P@$$w0rd"))
+        //     .role(Role.ROLE_CUSTOMER)
+        //     .build();
         // users.createUser(customer);
         return users;
     }
