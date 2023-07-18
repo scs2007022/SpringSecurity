@@ -80,26 +80,26 @@ public class DataSourceConfig {
 
     @Bean
     JdbcUserDetailsManager users(){
-        AppUser customer = AppUser.builder()
-            .username("customer1")
-            .email("customer@gmail.com")
-            .name("Customer")
-            .phone("98765432")
-            .password(passwordEncoder().encode("P@$$w0rd"))
-            .role(Role.ROLE_CUSTOMER)
-            .build();
+        JdbcUserDetailsManager users = new JdbcUserDetailsManager();
+        users.setDataSource(dataSource());
         AppUser admin = AppUser.builder()
-            .username("admin1")
+            .username("admin")
             .email("admin@gmail.com")
             .name("Admin")
             .phone("98765432")
             .password(passwordEncoder().encode("P@$$w0rd"))
             .role(Role.ROLE_ADMIN)
             .build();
-        JdbcUserDetailsManager users = new JdbcUserDetailsManager();
-        users.setDataSource(dataSource());
-        users.createUser(customer);
-        users.createUser(admin);
+        // users.createUser(admin);
+        AppUser customer = AppUser.builder()
+        .username("customer")
+        .email("customer@gmail.com")
+        .name("Customer")
+        .phone("98765432")
+        .password(passwordEncoder().encode("P@$$w0rd"))
+        .role(Role.ROLE_CUSTOMER)
+        .build();
+        // users.createUser(customer);
         return users;
     }
 }
