@@ -20,7 +20,13 @@ public class AccessControllByRole {
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().permitAll()            
             )
-            .formLogin(withDefaults())
+            // .formLogin(withDefaults())
+            .formLogin(form->form
+                .loginPage("/login")
+
+
+                .permitAll()
+            )
         ;
         return http.build();
     }

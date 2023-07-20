@@ -81,7 +81,7 @@ public class DataSourceConfig {
     @Bean
     JdbcUserDetailsManager users(){
         AppUser customer = AppUser.builder()
-            .username("customer1")
+            .username("customer")
             .email("customer@gmail.com")
             .name("Customer")
             .phone("98765432")
@@ -89,7 +89,7 @@ public class DataSourceConfig {
             .role(Role.ROLE_CUSTOMER)
             .build();
         AppUser admin = AppUser.builder()
-            .username("admin1")
+            .username("admin")
             .email("admin@gmail.com")
             .name("Admin")
             .phone("98765432")
