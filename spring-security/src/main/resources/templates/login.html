@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head charset="ISO-8859-1">
+        <title>Login Page</title>
+    </head>
+    <body>
+        <h1>Welcome. This is the login page.</h1>
+        <form action="/login" method="post">
+            <label for="username">Username:
+                <input type="text" name="username" id="username" placeholder="Username" required autofocus>
+            </label>
+            <br>
+            <label for="password">Password:
+                <input type="password" name="password" id="password" placeholder="Password" required autofocus>
+            </label>
+            <br>
+            <input type="submit" value="Log in">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+        </form>
+    </body>
+</html>
