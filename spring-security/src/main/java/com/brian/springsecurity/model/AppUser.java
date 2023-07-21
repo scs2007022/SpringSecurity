@@ -7,11 +7,13 @@ import java.util.Set;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +21,12 @@ import lombok.NoArgsConstructor;
 import lombok.Singular;
 
 @Entity
-@Table(name = "appusers")
+@Table(
+    name = "appusers",
+    uniqueConstraints = @UniqueConstraint(columnNames = {
+        "username","email"
+    })
+)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,14 +36,17 @@ public class AppUser implements UserDetails{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @Nonnull
     private String username;
 
     private String email;
 
+    @Nonnull
     private String name;
     
     private String phone;
     
+    @Nonnull
     private String password;
 
     @Singular

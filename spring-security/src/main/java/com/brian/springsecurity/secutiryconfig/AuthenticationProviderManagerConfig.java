@@ -6,14 +6,18 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
+
+import com.brian.springsecurity.service.AppUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
-public class AuthenticationProviderManagerConfig {
+public class AuthenticationProviderManagerConfig{
 
     @Autowired
-    private JdbcUserDetailsManager users;
+    private AppUserDetailsService appUserDetailsService;
+
+    // @Autowired
+    // private JdbcUserDetailsManager users;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -21,13 +25,8 @@ public class AuthenticationProviderManagerConfig {
     @Bean
     public DaoAuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(users);
+        authProvider.setUserDetailsService(appUserDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder);
         return authProvider;
     }
-
-    // @Autowired
-    // public void configureGlobal(AuthenticationManagerBuilder auth)throws Exception{
-    //     auth.authenticationProvider(authenticationProvider());
-    // }
 }
