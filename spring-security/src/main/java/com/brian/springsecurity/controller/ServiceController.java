@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.brian.springsecurity.model.AppUser;
+import com.brian.springsecurity.model.Role;
 import com.brian.springsecurity.service.AppUserDetailsService;
 
 import lombok.extern.log4j.Log4j2;
@@ -33,16 +34,22 @@ public class ServiceController {
     public String customer(Model model){
         AppUser appUser = (AppUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("name",appUser.getName());
+        if (appUser.getRoles().contains(Role.ROLE_CUSTOMER)){
+            model.addAttribute("isCustomer");
+        }
         log.debug("Called /api/customer, the principal.getName()[{}]",appUser.getUsername());
-        return "Hello customer Mr/Ms. "+appUser.getName()+" !";
+        return "greeting";
     }
-
+    
     @GetMapping("/admin")
     public String admin(Model model){
         AppUser appUser = (AppUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("name",appUser.getName());
+        if (appUser.getRoles().contains(Role.ROLE_ADMIN)){
+            model.addAttribute("isAdmin");
+        }
         log.debug("Called /api/admin, the principal.getName()[{}]",appUser.getUsername());
-        return "Hello Admin Mr/Ms. "+appUser.getName()+" !";
+        return "greeting";
     }
 
     @PostMapping("/register")

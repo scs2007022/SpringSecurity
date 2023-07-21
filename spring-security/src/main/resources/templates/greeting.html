@@ -5,6 +5,13 @@
     </head>
     <body>
         <h1>This is the Greeting Page!</h1>
-        <div>Hello <span th:text="${username}" /></div>
+        <div>Hello! 
+            <span th:if="${isCustomer}"> My honour customer: 
+                <span th:text="${name}"></span>
+            </span>
+            <span th:if="${isAdmin}"> My honour admin: 
+                <span th:text="${name}"></span>
+            </span>
+        </div>
     </body>
 </html>
